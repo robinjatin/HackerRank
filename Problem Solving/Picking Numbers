@@ -1,0 +1,71 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+
+    /*
+     * Complete the 'pickingNumbers' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER_ARRAY a as parameter.
+     */
+
+ /*   public static int pickingNumbers(List<Integer> a) {
+    // Write your code here
+    /*int count=0;
+    for(int i=0;i<a.size()-1;i++)
+    {
+            int diff=a.get(i+1)-a.get(i);
+            if(diff<0)
+            diff=-diff;
+            if(diff<=1)
+            count++;
+        
+    }
+    return count+1;
+    }*/
+
+
+static int pickingNumbers(int[] a) {
+        int[] count=new int[a.length-1];
+        Arrays.sort(a);
+        for(int i=0;i<a.length-1;i++){
+            ArrayList<Integer> arr = new ArrayList<Integer>();
+            arr.add(a[i]);
+            for(int j=i+1;j<a.length;j++){
+                if(Math.abs(a[i]-a[j])==0||Math.abs(a[i]-a[j])==1){
+                    arr.add(a[j]);                    
+                }
+                
+            }
+            count[i]=arr.size();
+        }
+        Arrays.sort(count);
+        return count[count.length-1];
+    }
+}
+
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        Result r=new Result();
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        int t=r.pickingNumbers(arr);
+        System.out.println(t);
+    }
+}
