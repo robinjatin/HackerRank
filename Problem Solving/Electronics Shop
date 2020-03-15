@@ -1,0 +1,75 @@
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    /*
+     * Complete the getMoneySpent function below.
+     */
+   /* static long getMoneySpent(long[] keyboards, long[] drives, long b) {
+        /*
+         * Write your code here.
+         */
+        /* long n1=keyboards.length;
+         long n2=drives.length;
+         ArrayList<Long> al=new ArrayList<>();
+         int flag=0;
+         for(int i=0;i<n1;i++)
+         {
+             for(int j=0;j<n2;j++)
+             {
+                 if(keyboards[i]+drives[j]<b){
+                 al.add((keyboards[i]+drives[j]));
+                 flag=1;
+                 }
+             }
+         }
+         if(flag==0)
+         {
+             return -1;
+         }
+         else{
+         long max=al.get(0);
+         for(int i=0;i<al.size();i++)
+         {
+             if(max<al.get(i))
+             {
+                 max=al.get(i);
+             }
+         }
+         return max;
+         }
+    }
+*/
+    private static final Scanner in = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        int s = in.nextInt();
+        int n = in.nextInt();
+        int m = in.nextInt();
+        Integer[] keyboards = new Integer[n];
+        for(int keyboards_i=0; keyboards_i < n; keyboards_i++){
+            keyboards[keyboards_i] = in.nextInt();
+        }
+        int[] pendrives = new int[m];
+        for(int pendrives_i=0; pendrives_i < m; pendrives_i++){
+            pendrives[pendrives_i] = in.nextInt();
+        }
+        
+        Arrays.sort(keyboards, Collections.reverseOrder());//Descending order
+        Arrays.sort(pendrives);//Ascending order
+        
+        int max = -1;
+        for(int i = 0, j = 0; i < n; i++){
+            for(; j < m; j++){
+                if(keyboards[i]+pendrives[j] > s) break; //This prevents j from incrementing
+                if(keyboards[i]+pendrives[j] > max)
+                    max = keyboards[i]+pendrives[j];
+            }
+        }
+        System.out.println(max);
+    }
+}
