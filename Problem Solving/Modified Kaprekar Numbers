@@ -1,0 +1,75 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the kaprekarNumbers function below.
+    static void kaprekarNumbers(int p, int q) {
+        int flag=0;
+        if(p<=9)
+        {
+            System.out.print(1+" "+9+" ");
+        for(int x=10;x<=q;x++)
+        {
+            long a=(long)x;
+            long b=a*a;
+            String num=Long.toString(b);
+            long sum=0;
+            int mid=(num.length()/2);
+            int size=num.length();
+            long one=Long.parseLong(num.substring(0,mid));
+            long two=Long.parseLong(num.substring(mid,size));
+            sum=one+two;
+            if(sum==a)
+            {
+                flag=1;
+                System.out.print(a+" ");
+            }
+        }
+        }else
+        {
+            for(int x=p;x<=q;x++)
+        {
+            int a=x;
+            int b=a*a;
+            String num=Integer.toString(b);
+            int sum=0;
+            int mid=(num.length()/2);
+            int size=num.length();
+            int one=Integer.parseInt(num.substring(0,mid));
+            int two=Integer.parseInt(num.substring(mid,size));
+            sum=one+two;
+            if(sum==a)
+            {
+                flag=1;
+                System.out.print(a+" ");
+            }
+        }
+        }
+        if(flag==0)
+        {
+            System.out.println("INVALID RANGE");
+        }
+
+
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int p = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        int q = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        kaprekarNumbers(p, q);
+
+        scanner.close();
+    }
+}
