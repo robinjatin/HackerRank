@@ -1,0 +1,79 @@
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    /*
+     * Complete the timeConversion function below.
+     */
+    static String timeConversion(String s) {
+        /*
+         * Write your code here.
+         */
+         StringBuilder str=new StringBuilder();
+         int count=0;
+         for(int i=0;i<s.length();i++)
+         {
+             if(s.charAt(i)!=':')
+             str.append(s.charAt(i));
+             else if(s.charAt(i)==':')
+             {
+             break;
+             }
+             count++;
+         }
+         int date=0,flag=0;
+         if(s.charAt(s.length()-2)=='A')
+         {
+             date=Integer.parseInt(str.toString());
+             if(date==12)
+             {
+                 flag=1;
+             }
+             else
+             {
+                 flag=2;
+             }
+         }
+         else if(s.charAt(s.length()-2)=='P'){
+            
+         date=Integer.parseInt(str.toString());
+         if(date!=12)
+         date+=12;
+        }
+        String sho=new String();
+        if(flag==0)
+        sho=Integer.toString(date);
+        else if(flag==2)
+       {
+            sho=Integer.toString(date);
+            sho="0"+sho;
+       }
+        else if(flag==1)
+        sho="00";
+        for(int i=count;i<s.length()-2;i++)
+        {
+            sho+=s.charAt(i);
+        }
+        return sho;
+    }
+
+    private static final Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = scan.nextLine();
+
+        String result = timeConversion(s);
+
+        bw.write(result);
+        bw.newLine();
+
+        bw.close();
+    }
+}
+
