@@ -1,0 +1,50 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the beautifulDays function below.
+    static int beautifulDays(int i, int j, int k) {
+        int sum1=0,rem1=0,count=0;
+        for(int a=i;a<=j;a++){
+        String a1=Integer.toString(a);
+        StringBuilder a11=new StringBuilder(a1);
+        StringBuilder a12=a11.reverse();
+        String b1=a12.toString();
+        int b=Integer.parseInt(b1);
+        int diff=Math.abs(a-b);
+        if(diff%k==0)
+        count++;
+        }
+        return count;
+
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String[] ijk = scanner.nextLine().split(" ");
+
+        int i = Integer.parseInt(ijk[0]);
+
+        int j = Integer.parseInt(ijk[1]);
+
+        int k = Integer.parseInt(ijk[2]);
+
+        int result = beautifulDays(i, j, k);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}
