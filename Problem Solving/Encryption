@@ -1,0 +1,90 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the encryption function below.
+    static String encryption(String s) {
+
+    double row=Math.floor(Math.pow(s.length(),0.5));
+        double col=Math.ceil(Math.pow(s.length(),0.5));
+        String ans ="";
+        for(int i=0;i<col;i++){
+            int j=0;
+            while(i+j<s.length()){
+                ans=ans+s.substring(i+j,i+j+1);
+                j=(int) (j+col);}
+            ans=ans+" ";}
+            return ans;
+
+       /* String str=new String();
+        for(int i=0;i<s.length();i++)
+        {
+            if(s.charAt(i)>=97&&s.charAt(i)<=122)
+            {
+                str+=s.charAt(i);
+            }
+        }
+        int n=str.length();
+       // System.out.println(n);
+        int r=(int)Math.sqrt(n);
+        int c=r+1;
+        if((r*c)<n)
+            r=r+1;
+        char x[][]=new char[r][c];
+        int index=0;
+        for(int i=0;i<r;i++)
+        {
+           
+                for(int j=0;j<c;j++)
+                {
+                    if(index>n-1)
+                        break;
+                    else {
+                x[i][j]=str.charAt(index);
+                index++;
+                    }
+                }
+            
+        }
+        //System.out.print(r);
+        
+        String laststr=new String();
+        int top=0;
+        int bottom=r-1;
+        int left=0;
+        int right=c-1;
+        for(int i=left;i<=right;i++)
+        {
+            for(int j=top;j<=bottom;j++)
+            {
+                laststr+=x[j][i];
+            }
+            laststr+=" ";
+        }
+        return laststr;*/
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = scanner.nextLine();
+
+        String result = encryption(s);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}
+
