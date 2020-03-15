@@ -1,0 +1,85 @@
+import java.util.Scanner;
+
+public class Solution {
+
+    public static void main(String[] args) {
+            Scanner sc=new Scanner(System.in);
+            System.out.println("================================");
+            for(int i=0;i<3;i++)
+            {
+                String s1=sc.next();
+                int x=sc.nextInt();
+                int count=0;
+                
+                int cgd=x;
+                while(cgd>0)
+                {
+                    cgd=cgd/10;
+                    count++;
+                }
+                if(count<3)
+                {
+                    if(x!=0){
+                    String str=new String();
+                    str=Integer.toString(x);
+                    int num=3-count;
+                    while(num>0)
+                    { 
+                        str="0"+str;
+                        --num;
+                    }
+                    int num11=str.length()+s1.length();
+                    num11=15-num11;
+                    String j=new String();
+                    //System.out.println(num11);
+                    num11+=3;
+                    while(num11>0)
+                    {
+                        j+=" ";
+                        --num11;
+                    }
+                    System.out.println(s1+j+str);
+                }
+                else if(x==0)
+                {
+                    String str=new String();
+                    str=Integer.toString(x);
+                    str="00"+str;
+                    int len=s1.length();
+                    len=15-len;
+                    String j=new String();
+                    //System.out.println(num11);
+
+                    while(len>0)
+                    {
+                        j+=" ";
+                        --len;
+                    }
+                    System.out.println(s1+j+str);
+                }
+                }
+                else{
+                    String str=new String();
+                    str=Integer.toString(x);
+                     int len=s1.length();
+                    len=len+3;
+                    len=15-len;
+                    String j=new String();
+                    len+=3;
+                    while(len>0)
+                    {
+                        j+=" ";
+                        --len;
+                    }
+                System.out.println(s1+j+x);
+            }
+                //Complete this line
+            }
+            System.out.println("================================");
+
+    }
+}
+
+
+
+
